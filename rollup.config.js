@@ -4,11 +4,11 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import {uglify} from 'rollup-plugin-uglify'
 export default {
-  input: 'src/first-character-sink',
+  input: 'src/dropcap.js',
   output: {
-    file: 'dist/js/first-character-sink.min.js',
+    file: 'dist/js/dropcap.min.js',
     format: 'umd',
-    name: 'FirstCharacterSink'
+    name: 'DropCap'
   },
   plugins: [
     resolve({

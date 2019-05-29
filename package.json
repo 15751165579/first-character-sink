@@ -2,15 +2,27 @@
   "name": "first-character-sink",
   "version": "1.0.0",
   "description": "JavaScript first character sink polyfill",
-  "main": "index.js",
+  "main": "src/dropcap.js",
   "scripts": {
+    "build": "npx rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "javascript",
-    "sink"
+    "sink",
+    "dropcap",
+    "drop",
+    "cap"
   ],
-  "author": "descire",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "author": {
+    "name": "descire",
+    "url": "https://github.com/15751165579",
+    "email": "15751165579@163.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.4",
