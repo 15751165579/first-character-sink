@@ -43,11 +43,7 @@ function getStyleObject(el, cssProperties = []) {
  */
 function getFontCSS(el) {
   const cssProperties = ['fontFamily', 'fontSize', 'lineHeight']
-  const _styleObject = getStyleObject(el, cssProperties)
-  if (_styleObject.lineHeight === 'normal') {
-    _styleObject.lineHeight = 1.15 * Number.parseFloat(_styleObject.fontSize)
-  }
-  return _styleObject
+  return getStyleObject(el, cssProperties)
 }
 
 /**

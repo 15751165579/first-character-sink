@@ -25,6 +25,29 @@ class DropCap {
     this.text = text
 
     this.fontCSS = getFontCSS(this.el)
+    console.log(this.fontCSS)
+    if (this.fontCSS.lineHeight === 'normal') {
+      this.calculateLineHeight()
+    }
+  }
+  calculateLineHeight() {
+    const { lineHeight, fontFamily, fontSize } = this.fontCSS
+    const el = document.createElement('p')
+    el.style.cssText = transfromObjectToCSSText({
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      lineHeight,
+      fontFamily,
+      fontSize,
+      visibility: 'hidden',
+      overflow: 'hidden'
+    })
+    el.innerHTML = `<span>${this.text}</span>`
+    document.body.appendChild(el)
+    this.fontCSS.lineHeight = el.offsetHeight
+    console.log('line-height --- ' + this.fontCSS.lineHeight)
+    document.body.removeChild(el)
   }
   /**
    * 计算总高度
