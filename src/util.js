@@ -73,9 +73,26 @@ function toPXLength(number) {
   return `${number}px`
 }
 
+/**
+ * 获取 CSS 的属性名 （可以用于判断属性是否支持）
+ * @param {String} property 
+ * @param {Number | String} value 
+ */
+function getCSSPropertyName(property, value) {
+  const prefix = ['-webkit-', '-moz-', '-ms-']
+  for (let i = 0, max = prefix.length; i < max; i++) {
+    const name = `${prefix[i]}${property}`
+    if (CSS.supports(name, value)) {
+      return name
+    }
+  }
+  return false
+}
+
 exports.transformCamelToHyphen = transformCamelToHyphen
 exports.transfromObjectToCSSText = transfromObjectToCSSText
 exports.getStyleObject = getStyleObject
 exports.getFontCSS = getFontCSS
 exports.isBlack = isBlack
 exports.toPXLength = toPXLength
+exports.getCSSPropertyName = getCSSPropertyName

@@ -3,7 +3,8 @@ const {
   transfromObjectToCSSText,
   getFontCSS,
   isBlack,
-  toPXLength
+  toPXLength,
+  getCSSPropertyName
 } = require('./util')
 
 const testFontSize = 100
@@ -45,7 +46,7 @@ class DropCap {
    * @returns {Number}
    * @memberof DropCap
    */
-  calculateBaselineRatio (fontFamily, text, fontSize) {
+  calculateBaselineRatio(fontFamily, text, fontSize) {
     const el = document.createElement('div')
     const cssText = transfromObjectToCSSText({
       display: 'block',
@@ -145,7 +146,11 @@ class DropCap {
    *
    * @memberof DropCap
    */
-  init () {
+  init() {
+    const initialLetter = getCSSPropertyName('initial-letter', this.numberOfLine)
+    if (initialLetter) {
+      return 
+    }
     const { lineHeight, fontSize, fontFamily } = this.fontCSS
     const height = Number.parseFloat(lineHeight, 10)
     const lineSpace = height - Number.parseFloat(fontSize, 10)
